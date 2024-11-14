@@ -11,9 +11,10 @@ const FormList = () => {
     const fetchForms = async () => {
       try {
         const response = await axios.get(`${API_URL}/api/forms`);
-        setForms(response.data);
+        setForms(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         console.error('Error fetching forms:', error);
+        setForms([]);
       }
     };
     fetchForms();

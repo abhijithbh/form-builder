@@ -39,7 +39,7 @@ const ViewForm = () => {
     alert('Form submitted successfully!');
   };
 
-  if (!form) return <div>Loading...</div>;
+  if (!form) return <div></div>;
 
   return (
     <div className="page-container">

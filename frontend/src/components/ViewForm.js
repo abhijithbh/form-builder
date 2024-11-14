@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './styles.css';
+import { API_URL } from '../config';
 
 const ViewForm = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const ViewForm = () => {
   useEffect(() => {
     const fetchForm = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/forms/${id}`);
+        const response = await axios.get(`${API_URL}/api/forms/${id}`);
         setForm(response.data);
         const initialData = {};
         response.data.inputs.forEach(input => {

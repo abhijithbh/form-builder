@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './styles.css';
+import { API_URL } from '../config';
 
 const EditForm = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const EditForm = () => {
   useEffect(() => {
     const fetchForm = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/forms/${id}`);
+        const response = await axios.get(`${API_URL}/api/forms/${id}`);
         setTitle(response.data.title);
         setInputs(response.data.inputs);
       } catch (error) {
@@ -51,7 +52,7 @@ const EditForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/forms/${id}`, {
+      await axios.put(`${API_URL}/api/forms/${id}`, {
         title,
         inputs
       });

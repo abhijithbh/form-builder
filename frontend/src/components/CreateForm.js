@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './styles.css';
+import { API_URL } from '../config';
 
 const CreateForm = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const CreateForm = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/forms', {
+      await axios.post(`${API_URL}/api/forms`, {
         title,
         inputs: inputs.map((input, index) => ({ ...input, order: index }))
       });
